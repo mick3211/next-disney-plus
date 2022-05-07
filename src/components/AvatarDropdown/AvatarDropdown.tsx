@@ -49,7 +49,9 @@ export const AvatarDropdown: React.FC = () => {
                     <AiOutlinePlus size={'1.5rem'} />
                     Adicionar perfil
                 </StyledItem>
+
                 <Separator />
+
                 {menuLinks.map(item => (
                     <StyledItem key={item.name}>{item.name}</StyledItem>
                 ))}

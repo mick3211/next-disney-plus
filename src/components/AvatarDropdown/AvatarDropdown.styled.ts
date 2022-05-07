@@ -1,6 +1,17 @@
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import * as Avatar from '@radix-ui/react-avatar';
-import { styled } from 'src/styles/stitches';
+import { styled, keyframes } from 'src/styles/stitches';
+
+const fadeInDown = keyframes({
+    from: {
+        transform: 'translateY(-16px)',
+        opacity: 0,
+    },
+    to: {
+        transform: 'none',
+        opacity: 1,
+    },
+});
 
 export const StyledAvatar = styled(Avatar.Root, {
     width: 45,
@@ -48,9 +59,19 @@ export const StyledTrigger = styled(DropdownMenu.Trigger, {
 
 export const StyledContent = styled(DropdownMenu.Content, {
     backgroundColor: '$surface',
-    padding: 8,
+    py: 8,
+    px: 16,
     border: '1px solid #222',
     fontSize: '$sm',
+    animationDuration: '400ms',
+    animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+    willChange: 'transform, opacity',
+
+    '@media (prefers-reduced-motion: no-preference)': {
+        '&[data-state="open"]': {
+            animationName: fadeInDown,
+        },
+    },
 });
 
 export const StyledItem = styled(DropdownMenu.Item, {
