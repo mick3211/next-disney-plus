@@ -1,4 +1,5 @@
 import {
+    Separator,
     StyledAvatar,
     StyledAvatarFallback,
     StyledAvatarImage,
@@ -7,7 +8,7 @@ import {
     StyledTrigger,
 } from './AvatarDropdown.styled';
 import { Root as DropdownRoot } from '@radix-ui/react-dropdown-menu';
-import { useState } from 'react';
+import { AiOutlinePlus } from 'react-icons/ai';
 
 const menuLinks = [
     {
@@ -44,6 +45,11 @@ export const AvatarDropdown: React.FC = () => {
             </StyledTrigger>
 
             <StyledContent sideOffset={16} align="end">
+                <StyledItem>
+                    <AiOutlinePlus size={'1.5rem'} />
+                    Adicionar perfil
+                </StyledItem>
+                <Separator />
                 {menuLinks.map(item => (
                     <StyledItem key={item.name}>{item.name}</StyledItem>
                 ))}

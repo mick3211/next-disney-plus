@@ -58,9 +58,16 @@ export const StyledItem = styled(DropdownMenu.Item, {
     color: '$textSecondary',
     py: 8,
     cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '1rem',
 
     '&:hover': {
         color: '$textPrimary',
         outline: 'none',
     },
+});
+
+export const Separator = styled(DropdownMenu.Separator, {
+    py: 4,
 });
