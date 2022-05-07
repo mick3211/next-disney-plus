@@ -1,8 +1,13 @@
-import { HeaderStyled, NavItemStyled, NavListStyled } from './Header.styled';
+import {
+    Container,
+    HeaderStyled,
+    NavItemStyled,
+    NavListStyled,
+} from './Header.styled';
 import { AiFillHome, AiOutlinePlus, AiOutlineSearch } from 'react-icons/ai';
+import { AvatarDropdown } from '@components/AvatarDropdown/AvatarDropdown';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
 const navItems = [
     {
@@ -38,33 +43,28 @@ export const Header: React.FC = () => {
 
     return (
         <HeaderStyled opaque={isScrolled}>
-            <img
-                src="https://upload.wikimedia.org/wikipedia/commons/archive/3/3e/20220128173228%21Disney%2B_logo.svg"
-                alt="Disney+"
-                width={79}
-            />
-            <nav>
-                <NavListStyled>
-                    {navItems.map(item => (
-                        <NavItemStyled key={item.name}>
-                            <Link href={item.href}>
-                                <a>
-                                    {item.icon}
-                                    {item.name.toUpperCase()}
-                                </a>
-                            </Link>
-                        </NavItemStyled>
-                    ))}
-                </NavListStyled>
-            </nav>
-
-            <DropdownMenu.Root>
-                <DropdownMenu.Trigger>Abrir drodpw</DropdownMenu.Trigger>
-
-                <DropdownMenu.Content>
-                    <DropdownMenu.Item>asdsad</DropdownMenu.Item>
-                </DropdownMenu.Content>
-            </DropdownMenu.Root>
+            <Container>
+                <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/archive/3/3e/20220128173228%21Disney%2B_logo.svg"
+                    alt="Disney+"
+                    width={79}
+                />
+                <nav>
+                    <NavListStyled>
+                        {navItems.map(item => (
+                            <NavItemStyled key={item.name}>
+                                <Link href={item.href}>
+                                    <a>
+                                        {item.icon}
+                                        <span>{item.name.toUpperCase()}</span>
+                                    </a>
+                                </Link>
+                            </NavItemStyled>
+                        ))}
+                    </NavListStyled>
+                </nav>
+                <AvatarDropdown />
+            </Container>
         </HeaderStyled>
     );
 };

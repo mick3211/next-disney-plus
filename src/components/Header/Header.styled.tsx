@@ -1,14 +1,36 @@
 import { styled } from 'src/styles/stitches';
 
+export const Container = styled('div', {
+    width: '100%',
+    mx: 'auto',
+    display: 'grid',
+    gridTemplateColumns: 'auto 1fr auto',
+    alignItems: 'center',
+    gap: '3rem',
+    justifyItems: 'center',
+
+    '@sm': {
+        maxWidth: 640,
+        justifyItems: 'flex-start',
+    },
+    '@md': {
+        maxWidth: 768,
+    },
+    '@lg': {
+        maxWidth: 1024,
+    },
+    '@xl': {
+        maxWidth: 1536,
+    },
+});
+
 export const HeaderStyled = styled('header', {
     py: 12,
-    px: 20,
+    px: 16,
     width: '100%',
     backgroundColor: 'transparent',
     transition: 'background-color .2s',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '3rem',
+
     position: 'fixed',
     top: 0,
 
@@ -44,5 +66,15 @@ export const NavItemStyled = styled('li', {
         textDecoration: 'underline',
         textDecorationColor: '$bgSecondary',
         textUnderlineOffset: 6,
+    },
+
+    '& a span': {
+        display: 'none',
+    },
+
+    '@sm': {
+        '& a span': {
+            display: 'block',
+        },
     },
 });
