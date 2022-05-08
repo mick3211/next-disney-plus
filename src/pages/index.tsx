@@ -9,7 +9,6 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
         '/discover/movie',
         {
             params: {
-                language: 'pt-BR',
                 region: 'BR',
                 sort_by: 'popularity.desc',
                 page: '1',
