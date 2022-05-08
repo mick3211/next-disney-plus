@@ -13,6 +13,5 @@ export const globalStyles = globalCss({
         background:
             'radial-gradient(ellipse, rgb(43,48,65) 2%, rgb(4,6,12) 100%)',
         backgroundAttachment: 'fixed',
-        height: '100vh',
     },
 });
