@@ -1,10 +1,22 @@
-import { useEffect, useRef, useState } from 'react';
-import { CarouselItem, CarouselRoot, ControlWrapper } from './Carousel.styled';
+import { useEffect, useRef } from 'react';
+import {
+    CarouselItem,
+    CarouselItemTitle,
+    CarouselRoot,
+    ControlWrapper,
+} from './Carousel.styled';
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
+import { Movie } from 'src/@types/movie';
+import { config } from 'src/services/apiService';
+import Image from 'next/image';
+import Link from 'next/link';
 
-export const Carousel: React.FC = () => {
+interface Props {
+    contentList: Movie[];
+}
+
+export const Carousel: React.FC<Props> = ({ contentList }) => {
     const carouselRef = useRef<HTMLDivElement | null>(null);
-    const [step, setStep] = useState(1);
     let interval: NodeJS.Timer;
 
     function stepToRight() {
@@ -55,26 +67,25 @@ export const Carousel: React.FC = () => {
             <ControlWrapper position={'right'} onClick={stepToRight}>
                 <BsChevronRight />
             </ControlWrapper>
-            <CarouselItem>
-                <img
-                    src="https://s3.amazonaws.com/prod.assets.thebanner/styles/article-large/s3/article/large/TIN-453%20Doctor%20Strange%20_large_all.jpg?itok=4C_7h-VG"
-                    alt=""
-                    style={{ width: '100%' }}
-                />
-            </CarouselItem>
-            <CarouselItem>
-                <img
-                    src="https://s3.amazonaws.com/prod.assets.thebanner/styles/article-large/s3/article/large/TIN-453%20Doctor%20Strange%20_large_all.jpg?itok=4C_7h-VG"
-                    alt=""
-                />
-            </CarouselItem>
-            <CarouselItem>
-                <img
-                    src="https://s3.amazonaws.com/prod.assets.thebanner/styles/article-large/s3/article/large/TIN-453%20Doctor%20Strange%20_large_all.jpg?itok=4C_7h-VG"
-                    alt=""
-                    style={{ width: '100%' }}
-                />
-            </CarouselItem>
+
+            {contentList.map(movie => (
+                <CarouselItem key={movie.id}>
+                    <CarouselItemTitle>{movie.title}</CarouselItemTitle>
+                    <Link href={`/movie/${movie.id}`}>
+                        <a>
+                            <Image
+                                src={
+                                    config.base_url +
+                                    config.backdrop_sizes.original +
+                                    movie.backdrop_path
+                                }
+                                objectFit="cover"
+                                layout="fill"
+                            />
+                        </a>
+                    </Link>
+                </CarouselItem>
+            ))}
         </CarouselRoot>
     );
 };

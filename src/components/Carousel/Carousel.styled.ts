@@ -25,16 +25,35 @@ export const CarouselRoot = styled('div', {
 
 export const CarouselItem = styled('div', {
     width: '100%',
+    height: 400,
     scrollSnapAlign: 'center',
     overflow: 'hidden',
     borderRadius: 4,
+    position: 'relative',
     boxShadow:
-        'rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;',
+        'rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px',
 
-    '& img': {
-        width: '100%',
-        height: '100%',
-        objectFit: 'cover',
+    '&:hover': {
+        border: '4px solid rgba(0, 0, 0, .5)',
+    },
+});
+
+export const CarouselItemTitle = styled('h3', {
+    color: '$textPrimary',
+    fontSize: '2rem',
+    position: 'absolute',
+    top: '50%',
+    left: 16,
+    textShadow: 'black 0px 0px 8px',
+    transform: 'translateY(-50%)',
+    zIndex: 30,
+
+    '@md': {
+        fontSize: '2.5rem',
+    },
+
+    '@lg': {
+        fontSize: '4rem',
     },
 });
 
@@ -47,6 +66,7 @@ export const ControlWrapper = styled('button', {
     cursor: 'pointer',
     position: 'sticky',
     top: 0,
+    zIndex: 50,
     alignItems: 'center',
     backgroundColor: 'rgba(0, 0, 0, .4)',
     display: 'none',

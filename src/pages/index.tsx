@@ -34,7 +34,7 @@ const Home: NextPage<Props> = ({ popularMovieList }) => {
             </Head>
 
             <main style={{ height: '150vh', paddingTop: 64 }}>
-                <Carousel />
+                <Carousel contentList={popularMovieList.slice(0, 15)} />
             </main>
         </>
     );
