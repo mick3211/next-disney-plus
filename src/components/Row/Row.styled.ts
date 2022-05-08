@@ -7,7 +7,6 @@ export const RowRoot = styled('div', {
     overflowY: 'clip',
     scrollSnapType: 'x mandatory',
     display: 'grid',
-    gridTemplateColumns: 320,
     gridAutoColumns: 160,
     gridAutoFlow: 'column',
     gridColumnGap: '1.5rem',
