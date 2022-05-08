@@ -31,7 +31,7 @@ export const HeaderStyled = styled('header', {
     backgroundColor: 'transparent',
     transition: 'background-color .2s',
 
-    position: 'fixed',
+    position: 'sticky',
     top: 0,
     zIndex: 99,
 
