@@ -11,6 +11,7 @@ const { styled, keyframes } = createStitches({
         },
         fontSizes: {
             sm: '0.8rem',
+            base: '1rem',
         },
     },
     utils: {

@@ -33,6 +33,7 @@ export const HeaderStyled = styled('header', {
 
     position: 'fixed',
     top: 0,
+    zIndex: 99,
 
     variants: {
         opaque: {
@@ -49,8 +50,14 @@ export const NavListStyled = styled('ul', {
     alignItems: 'center',
     color: '$textPrimary',
     listStyleType: 'none',
-    fontSize: '$sm',
+    fontSize: '$base',
     fontWeight: 'bold',
+
+    '@sm': {
+        '&': {
+            fontSize: '$sm',
+        },
+    },
 });
 
 export const NavItemStyled = styled('li', {
