@@ -7,11 +7,18 @@ function MyApp({ Component, pageProps }: AppProps) {
     globalStyles();
 
     return (
-        <>
+        <div
+            style={{
+                minHeight: '100vh',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+            }}
+        >
             <Header />
             <Component {...pageProps} />
             <Footer />
-        </>
+        </div>
     );
 }
 export default MyApp;

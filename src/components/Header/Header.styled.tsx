@@ -55,7 +55,7 @@ export const NavListStyled = styled('ul', {
 
     '@sm': {
         '&': {
-            fontSize: '$sm',
+            fontSize: '.9rem',
         },
     },
 });
@@ -71,8 +71,8 @@ export const NavItemStyled = styled('li', {
 
     '& a:hover': {
         textDecoration: 'underline',
-        textDecorationColor: '$bgSecondary',
         textUnderlineOffset: 6,
+        textDecorationThickness: 2,
     },
 
     '& a span': {

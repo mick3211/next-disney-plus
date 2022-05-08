@@ -13,6 +13,10 @@ export const RowRoot = styled('div', {
     scrollbarWidth: 'none',
     position: 'relative',
 
+    '&:after': {
+        content: '',
+    },
+
     '&::-webkit-scrollbar': {
         display: 'none',
     },
@@ -26,6 +30,8 @@ export const RowItem = styled('div', {
     width: '100%',
     height: 90,
     scrollSnapAlign: 'start',
+    scrollMarginLeft: 16,
+    scrollMarginRight: 16,
     position: 'relative',
     overflow: 'hidden',
     borderRadius: 4,
@@ -40,6 +46,7 @@ export const RowItem = styled('div', {
 
     '@sm': {
         height: 180,
+        scrollMarginLeft: '10vw',
     },
 });
 
