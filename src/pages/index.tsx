@@ -1,32 +1,15 @@
 import { Carousel } from '@components/Carousel/Crousel';
-import type { GetServerSidePropsContext, NextPage } from 'next';
+import { Row } from '@components/Row/Row';
+import { RowWrapper } from '@components/Row/Row.styled';
+import { Spinner } from '@components/Spinner/Spinner.styled';
+import type { NextPage } from 'next';
 import Head from 'next/head';
-import { Movie } from 'src/@types/movie';
-import { apiService } from 'src/services/apiService';
-import { styled } from 'src/styles/stitches';
+import { useIndex } from 'src/hooks/pages/useIndex';
 
-export async function getServerSideProps(ctx: GetServerSidePropsContext) {
-    const response = await apiService.get<{ results: Movie[] }>(
-        '/discover/movie',
-        {
-            params: {
-                region: 'BR',
-                sort_by: 'popularity.desc',
-                page: '1',
-                with_watch_providers: '337',
-                watch_region: 'BR',
-            },
-        }
-    );
+const Home: NextPage = () => {
+    const { popularMovies, actionMovies, fantasyMovies, comedyMovies } =
+        useIndex();
 
-    return { props: { popularMovieList: response.data.results } };
-}
-
-interface Props {
-    popularMovieList: Movie[];
-}
-
-const Home: NextPage<Props> = ({ popularMovieList }) => {
     return (
         <>
             <Head>
@@ -34,9 +17,32 @@ const Home: NextPage<Props> = ({ popularMovieList }) => {
                 <meta name="theme-color" content="rgb(4,6,12)" />
             </Head>
 
-            <main>
-                <Carousel contentList={popularMovieList.slice(0, 15)} />
-            </main>
+            {!(
+                popularMovies &&
+                actionMovies &&
+                fantasyMovies &&
+                comedyMovies
+            ) ? (
+                <Spinner />
+            ) : (
+                <main>
+                    <Carousel contentList={popularMovies.slice(0, 15)} />
+                    <RowWrapper>
+                        <Row
+                            contentList={actionMovies}
+                            title={'Filmes cheios de ação'}
+                        />
+                        <Row
+                            contentList={fantasyMovies}
+                            title={'Filmes de fantasia'}
+                        />
+                        <Row
+                            contentList={comedyMovies}
+                            title={'Filmes de comédia'}
+                        />
+                    </RowWrapper>
+                </main>
+            )}
         </>
     );
 };

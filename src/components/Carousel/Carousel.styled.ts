@@ -5,7 +5,6 @@ export const CarouselRoot = styled('div', {
     py: 50,
     overflowX: 'auto',
     overflowY: 'clip',
-    userSelect: 'none',
     scrollSnapType: 'x mandatory',
     display: 'grid',
     gridAutoColumns: '85%',
@@ -32,9 +31,10 @@ export const CarouselItem = styled('div', {
     position: 'relative',
     boxShadow:
         'rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px',
+    transition: 'border .2s',
 
     '&:hover': {
-        border: '4px solid rgba(0, 0, 0, .5)',
+        border: '4px solid $textPrimary',
     },
 });
 
@@ -73,6 +73,11 @@ export const ControlWrapper = styled('button', {
 
     '@sm': {
         display: 'flex',
+        opacity: 0,
+
+        '&:hover': {
+            opacity: 1,
+        },
     },
 
     variants: {

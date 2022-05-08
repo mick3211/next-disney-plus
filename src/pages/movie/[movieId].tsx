@@ -5,27 +5,43 @@ import { styled } from 'src/styles/stitches';
 import { FaPlay, FaPlus } from 'react-icons/fa';
 import { HiUserGroup } from 'react-icons/hi';
 import { formatDate } from 'src/services/dateService';
+import { Row } from '@components/Row/Row';
 
 export async function getServerSideProps(ctx: GetServerSidePropsContext) {
     const movieId = ctx.query.movieId;
-    const response = await apiService.get<Movie>(`/movie/${movieId}`);
+    const movieResponse = await apiService.get<Movie>(`/movie/${movieId}`);
+    const similarMoviesResponse = await apiService.get<{ results: Movie[] }>(
+        `/movie/${movieId}/similar`,
+        {
+            params: {
+                page: '1',
+                with_watch_providers: '337',
+            },
+        }
+    );
 
-    return { props: { movie: response.data } };
+    return {
+        props: {
+            movie: movieResponse.data,
+            similarMovies: similarMoviesResponse.data.results,
+        },
+    };
 }
 
 interface Props {
     movie: Movie;
+    similarMovies: Movie[];
 }
 
-const MoviePage: NextPage<Props> = ({ movie }) => {
+const MoviePage: NextPage<Props> = ({ movie, similarMovies }) => {
     return (
         <main>
             <Gradient />
             <BgImage
                 src={
                     config.base_url +
-                    config.backdrop_sizes.original +
-                    movie.backdrop_path
+                        config.backdrop_sizes.original +
+                        movie.backdrop_path || movie.poster_path
                 }
             />
             <Container>
@@ -49,6 +65,7 @@ const MoviePage: NextPage<Props> = ({ movie }) => {
                 </ButtonContainer>
                 <OverviewWrapper>{movie.overview}</OverviewWrapper>
             </Container>
+            <Row contentList={similarMovies} title="Filmes similares" />
         </main>
     );
 };
@@ -72,13 +89,13 @@ const BgImage = styled('img', {
     objectFit: 'cover',
     position: 'absolute',
     top: 0,
-    left: 0,
+    right: 0,
     zIndex: -2,
 });
 
 const Container = styled('div', {
     mx: 'auto',
-    paddingTop: '5rem',
+    py: '5rem',
     px: 16,
     color: '$textPrimary',
     display: 'flex',
