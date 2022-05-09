@@ -12,7 +12,7 @@ import {
     SearchInputWrapper,
 } from 'src/styles/pages/search.styled';
 
-const search: NextPage = () => {
+const SearchPage: NextPage = () => {
     const [searchValue, setSearchValue] = useState(''),
         [movieList, setMovieList] = useState<Movie[] | null>(null);
     const debouncedSearchValue = useDebounce<string>(searchValue, 1000);
@@ -69,4 +69,4 @@ const search: NextPage = () => {
     );
 };
 
-export default search;
+export default SearchPage;
