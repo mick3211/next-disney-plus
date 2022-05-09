@@ -10,17 +10,8 @@ export const Container = styled('div', {
     justifyItems: 'center',
 
     '@sm': {
-        maxWidth: 640,
         justifyItems: 'flex-start',
-    },
-    '@md': {
-        maxWidth: 768,
-    },
-    '@lg': {
-        maxWidth: 1024,
-    },
-    '@xl': {
-        maxWidth: 1536,
+        px: 16,
     },
 });
 

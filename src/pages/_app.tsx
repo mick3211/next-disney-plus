@@ -12,7 +12,6 @@ function MyApp({ Component, pageProps }: AppProps) {
                 minHeight: '100vh',
                 display: 'flex',
                 flexDirection: 'column',
-                justifyContent: 'space-between',
             }}
         >
             <Header />
