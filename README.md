@@ -1,9 +1,11 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Disney+ remake using NextJS and styled with Stitches
 
 ## Getting Started
 
 Clone repository:
 ```git clone https://github.com/mick3211/next-disney-plus.git```
+
+Install dependencies: ```npm install```
 
 Apply for an API key at [TMDB](https://www.themoviedb.org/documentation/api)
 
