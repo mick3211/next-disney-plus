@@ -7,7 +7,8 @@ const { styled, keyframes, getCssText } = createStitches({
             textSecondary: '#cacaca',
             surface: '#131313',
             bgSPrimary: 'rgb(4,6,12)',
-            bgSecondary: 'rgb(43,48,65)',
+            bgSecondary: '#1A1D29',
+            input: '#31343E',
         },
         fontSizes: {
             sm: '0.8rem',

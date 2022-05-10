@@ -9,6 +9,8 @@ import {
 } from './AvatarDropdown.styled';
 import { Root as DropdownRoot } from '@radix-ui/react-dropdown-menu';
 import { AiOutlinePlus } from 'react-icons/ai';
+import { User } from 'firebase/auth';
+import Link from 'next/link';
 
 const menuLinks = [
     {
@@ -29,15 +31,21 @@ const menuLinks = [
     },
     {
         name: 'Sair',
-        href: '',
+        href: '/signOut',
     },
 ];
 
-export const AvatarDropdown: React.FC = () => {
+interface Props {
+    user: User | null;
+}
+
+export const AvatarDropdown: React.FC<Props> = ({ user }) => {
     return (
         <DropdownRoot modal={false}>
             <StyledTrigger>
-                <span className="username">Agente P</span>
+                <span className="username">
+                    {user?.displayName || user?.email}
+                </span>
                 <StyledAvatar>
                     <StyledAvatarImage src="https://i.pinimg.com/550x/cf/1c/73/cf1c73e42a48cc8b9ad7c606745ff265.jpg" />
                     <StyledAvatarFallback>MF</StyledAvatarFallback>
@@ -53,7 +61,11 @@ export const AvatarDropdown: React.FC = () => {
                 <Separator />
 
                 {menuLinks.map(item => (
-                    <StyledItem key={item.name}>{item.name}</StyledItem>
+                    <StyledItem key={item.name}>
+                        <Link href={item.href}>
+                            <a>{item.name}</a>
+                        </Link>
+                    </StyledItem>
                 ))}
             </StyledContent>
         </DropdownRoot>

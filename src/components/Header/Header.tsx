@@ -8,6 +8,8 @@ import { AiFillHome, AiOutlinePlus, AiOutlineSearch } from 'react-icons/ai';
 import { AvatarDropdown } from '@components/AvatarDropdown/AvatarDropdown';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import useAuth from 'src/hooks/useAuth';
 
 const navItems = [
     {
@@ -28,6 +30,7 @@ const navItems = [
 ];
 
 export const Header: React.FC = () => {
+    const user = useAuth();
     const [isScrolled, setIsScrolled] = useState(false);
 
     useEffect(() => {
@@ -63,7 +66,7 @@ export const Header: React.FC = () => {
                         ))}
                     </NavListStyled>
                 </nav>
-                <AvatarDropdown />
+                <AvatarDropdown user={user} />
             </Container>
         </HeaderStyled>
     );

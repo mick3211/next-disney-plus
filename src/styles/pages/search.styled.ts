@@ -8,7 +8,7 @@ export const SearchInput = styled('input', {
     paddingRight: 64,
     fontSize: '2.5rem',
     color: '$textPrimary',
-    backgroundColor: 'rgb(75, 78, 90)',
+    backgroundColor: '$input',
     border: 'none',
     outline: 'none',
     opacity: 0.6,

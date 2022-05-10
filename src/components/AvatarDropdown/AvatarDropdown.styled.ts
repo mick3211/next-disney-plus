@@ -83,6 +83,13 @@ export const StyledItem = styled(DropdownMenu.Item, {
     alignItems: 'center',
     gap: '1rem',
 
+    '& a': {
+        color: '$textSecondary',
+        textDecoration: 'none',
+        width: '100%',
+        display: 'block',
+    },
+
     '&:hover': {
         color: '$textPrimary',
         outline: 'none',

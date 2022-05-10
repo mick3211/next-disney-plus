@@ -6,6 +6,7 @@ import { FaPlay, FaPlus } from 'react-icons/fa';
 import { HiUserGroup } from 'react-icons/hi';
 import { formatDate } from 'src/services/dateService';
 import { Row } from '@components/Row/Row';
+import { Header } from '@components/Header/Header';
 
 export async function getServerSideProps(ctx: GetServerSidePropsContext) {
     const movieId = ctx.query.movieId;
@@ -35,38 +36,41 @@ interface Props {
 
 const MoviePage: NextPage<Props> = ({ movie, similarMovies }) => {
     return (
-        <main>
-            <Gradient />
-            <BgImage
-                src={
-                    config.base_url +
-                        config.backdrop_sizes.original +
-                        movie.backdrop_path || movie.poster_path
-                }
-            />
-            <Container>
-                <div>
-                    <MovieTitle>{movie.title}</MovieTitle>
-                    <MovieInfo>{movie.vote_average}</MovieInfo>
-                    {' \u2022 '}
-                    <MovieInfo>{formatDate(movie.release_date)}</MovieInfo>
-                </div>
-                <ButtonContainer>
-                    <Button>
-                        <FaPlay /> Assistir
-                    </Button>
-                    <Button dark>Trailer</Button>
-                    <Button dark circular>
-                        <FaPlus />
-                    </Button>
-                    <Button dark circular>
-                        <HiUserGroup />
-                    </Button>
-                </ButtonContainer>
-                <OverviewWrapper>{movie.overview}</OverviewWrapper>
-            </Container>
-            <Row contentList={similarMovies} title="Filmes similares" />
-        </main>
+        <>
+            <Header />
+            <main>
+                <Gradient />
+                <BgImage
+                    src={
+                        config.base_url +
+                            config.backdrop_sizes.original +
+                            movie.backdrop_path || movie.poster_path
+                    }
+                />
+                <Container>
+                    <div>
+                        <MovieTitle>{movie.title}</MovieTitle>
+                        <MovieInfo>{movie.vote_average}</MovieInfo>
+                        {' \u2022 '}
+                        <MovieInfo>{formatDate(movie.release_date)}</MovieInfo>
+                    </div>
+                    <ButtonContainer>
+                        <Button>
+                            <FaPlay /> Assistir
+                        </Button>
+                        <Button dark>Trailer</Button>
+                        <Button dark circular>
+                            <FaPlus />
+                        </Button>
+                        <Button dark circular>
+                            <HiUserGroup />
+                        </Button>
+                    </ButtonContainer>
+                    <OverviewWrapper>{movie.overview}</OverviewWrapper>
+                </Container>
+                <Row contentList={similarMovies} title="Filmes similares" />
+            </main>
+        </>
     );
 };
 
