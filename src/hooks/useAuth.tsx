@@ -15,7 +15,9 @@ export default function useAuth() {
     return user;
 }
 
-export const CurrentUserContext = createContext({});
+export const CurrentUserContext = createContext<{ user: User | null }>({
+    user: null,
+});
 
 interface Props {
     children: React.ReactNode;

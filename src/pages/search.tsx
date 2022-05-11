@@ -1,3 +1,4 @@
+import { Header } from '@components/Header/Header';
 import { NextPage } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -30,42 +31,46 @@ const SearchPage: NextPage = () => {
     }, [debouncedSearchValue]);
 
     return (
-        <main>
-            <SearchInputWrapper>
-                <SearchInput
-                    placeholder="Título, personagem ou gêneros"
-                    value={searchValue}
-                    onChange={ev => setSearchValue(ev.target.value)}
-                />
-                {searchValue && (
-                    <ClearTextButton
-                        title="Limpar"
-                        aria-label="Limpar texto"
-                        onClick={() => setSearchValue('')}
+        <>
+            <Header />
+
+            <main>
+                <SearchInputWrapper>
+                    <SearchInput
+                        placeholder="Título, personagem ou gêneros"
+                        value={searchValue}
+                        onChange={ev => setSearchValue(ev.target.value)}
                     />
-                )}
-            </SearchInputWrapper>
-            <MovieGrid>
-                {movieList &&
-                    movieList.map(movie => (
-                        <div key={movie.id}>
-                            <Link href={`/movie/${movie.id}`}>
-                                <a>
-                                    <Image
-                                        src={
-                                            config.base_url +
-                                            config.backdrop_sizes[780] +
-                                            movie.backdrop_path
-                                        }
-                                        width={320}
-                                        height={180}
-                                    />
-                                </a>
-                            </Link>
-                        </div>
-                    ))}
-            </MovieGrid>
-        </main>
+                    {searchValue && (
+                        <ClearTextButton
+                            title="Limpar"
+                            aria-label="Limpar texto"
+                            onClick={() => setSearchValue('')}
+                        />
+                    )}
+                </SearchInputWrapper>
+                <MovieGrid>
+                    {movieList &&
+                        movieList.map(movie => (
+                            <div key={movie.id}>
+                                <Link href={`/movie/${movie.id}`}>
+                                    <a>
+                                        <Image
+                                            src={
+                                                config.base_url +
+                                                config.backdrop_sizes[780] +
+                                                movie.backdrop_path
+                                            }
+                                            width={320}
+                                            height={180}
+                                        />
+                                    </a>
+                                </Link>
+                            </div>
+                        ))}
+                </MovieGrid>
+            </main>
+        </>
     );
 };
 
