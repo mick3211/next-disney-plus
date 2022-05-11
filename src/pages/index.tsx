@@ -13,6 +13,8 @@ import { CurrentUserContext } from 'src/hooks/useAuth';
 const Home: NextPage = () => {
     const { user } = useContext(CurrentUserContext);
     const router = useRouter();
+    const { popularMovies, actionMovies, fantasyMovies, comedyMovies } =
+        useIndex();
 
     useEffect(() => {
         if (!user) {
@@ -23,9 +25,6 @@ const Home: NextPage = () => {
     if (!user) {
         return null;
     }
-
-    const { popularMovies, actionMovies, fantasyMovies, comedyMovies } =
-        useIndex();
 
     return (
         <>

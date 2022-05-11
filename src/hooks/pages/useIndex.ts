@@ -1,6 +1,8 @@
+import { useContext } from 'react';
 import { Movie } from 'src/@types/movie';
 import { apiService } from 'src/services/apiService';
 import useSWR from 'swr';
+import { CurrentUserContext } from '../useAuth';
 
 const getPopularMovies = async () => {
     const response = await apiService.get<{ results: Movie[] }>(
@@ -70,6 +72,10 @@ const getComedyMovies = async () => {
 };
 
 export function useIndex() {
+    const { user } = useContext(CurrentUserContext);
+
+    if (!user) return {};
+
     const { data: popularMovies } = useSWR('popularMovies', getPopularMovies);
     const { data: actionMovies } = useSWR('actionMovies', getActionMovies);
     const { data: fantasyMovies } = useSWR('fantasyMovies', getFantasyMovies);
