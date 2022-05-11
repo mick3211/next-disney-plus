@@ -67,6 +67,7 @@ export const Row: React.FC<Props> = ({ contentList, title }) => {
                                     }
                                     layout="fill"
                                     objectFit="cover"
+                                    alt={movie.title}
                                 />
                             </a>
                         </Link>

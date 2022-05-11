@@ -81,6 +81,7 @@ export const Carousel: React.FC<Props> = ({ contentList }) => {
                                 }
                                 objectFit="cover"
                                 layout="fill"
+                                alt={movie.title}
                             />
                         </a>
                     </Link>
