@@ -53,7 +53,7 @@ export const Carousel: React.FC<Props> = ({ contentList }) => {
         createInterval();
 
         return removeInterval;
-    }, []);
+    }, [createInterval, removeInterval]);
 
     return (
         <CarouselRoot

@@ -63,6 +63,7 @@ const SearchPage: NextPage = () => {
                                             }
                                             width={320}
                                             height={180}
+                                            alt={movie.title}
                                         />
                                     </a>
                                 </Link>
