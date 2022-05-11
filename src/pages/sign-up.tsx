@@ -74,13 +74,13 @@ const SignUpPage: NextPage = () => {
                             autoFocus
                             {...register('email', {
                                 required: true,
-                                pattern: /(w+@w+)/,
+                                pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
                             })}
                         />
-                        {errors.email && (
+                        {errors.email?.type === 'required' && (
                             <ErrorMessage>Insira um e-mail</ErrorMessage>
                         )}
-                        {errors.email && (
+                        {errors.email?.type === 'pattern' && (
                             <ErrorMessage>E-mail inválido</ErrorMessage>
                         )}
 
