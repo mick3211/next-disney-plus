@@ -34,6 +34,9 @@ export const LoginWrapper = styled('div', {
 
 export const Heading = styled('h4', {
     fontSize: '$md',
+    display: 'flex',
+    alignItems: 'center',
+    gap: 16,
 });
 
 export const FormContainer = styled('form', {
@@ -47,6 +50,8 @@ export const FormContainer = styled('form', {
 export const Span = styled('span', {
     fontSize: '$sm',
     color: '$textSecondary',
+    display: 'block',
+    textAlign: 'left',
 });
 
 export const SignUpLink = styled('a', {

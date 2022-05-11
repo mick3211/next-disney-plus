@@ -46,7 +46,7 @@ const Home: NextPage = () => {
                 fantasyMovies &&
                 comedyMovies
             ) ? (
-                <Spinner />
+                <Spinner size="xl" />
             ) : (
                 <main>
                     <Carousel contentList={popularMovies.slice(0, 15)} />

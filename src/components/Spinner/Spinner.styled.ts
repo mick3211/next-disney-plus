@@ -12,12 +12,22 @@ const spinAnimation = keyframes({
 
 export const Spinner = styled(BiLoaderAlt, {
     color: '$textPrimary',
-    fontSize: '500%',
     animationName: spinAnimation.name,
     animationDuration: '1s',
     animationIterationCount: 'infinite',
-    position: 'fixed',
+    position: 'absolute',
     top: '50%',
     left: '50%',
     zIndex: 50,
+
+    variants: {
+        size: {
+            sm: {
+                fontSize: 32,
+            },
+            xl: {
+                fontSize: '500%',
+            },
+        },
+    },
 });

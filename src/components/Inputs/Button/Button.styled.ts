@@ -11,8 +11,14 @@ export const Button = styled('button', {
     borderRadius: 4,
     cursor: 'pointer',
     transition: 'background-color .2s',
+    position: 'relative',
 
     '&:hover': {
         backgroundColor: '#0083e3',
+    },
+
+    '&:disabled': {
+        cursor: 'not-allowed',
+        backgroundColor: '#0061b1',
     },
 });
