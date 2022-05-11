@@ -17,7 +17,7 @@ interface Props {
 
 export const Carousel: React.FC<Props> = ({ contentList }) => {
     const carouselRef = useRef<HTMLDivElement | null>(null);
-    let interval: NodeJS.Timer;
+    const timerRef = useRef<NodeJS.Timer | null>(null);
 
     function stepToRight() {
         const carrouselElement = carouselRef.current;
@@ -42,24 +42,26 @@ export const Carousel: React.FC<Props> = ({ contentList }) => {
     }
 
     function createInterval() {
-        interval = setInterval(stepToRight, 5000);
+        timerRef.current = setInterval(stepToRight, 5000);
     }
 
     function removeInterval() {
-        clearInterval(interval);
+        if (timerRef.current) clearInterval(timerRef.current);
     }
 
     useEffect(() => {
         createInterval();
 
         return removeInterval;
-    }, [createInterval, removeInterval]);
+    }, []);
 
     return (
         <CarouselRoot
             ref={carouselRef}
             onMouseEnter={removeInterval}
             onMouseLeave={createInterval}
+            onTouchStart={removeInterval}
+            onTouchEnd={createInterval}
         >
             <ControlWrapper position={'left'} onClick={stepToLeft}>
                 <BsChevronLeft />
